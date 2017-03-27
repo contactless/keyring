@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+
+KEYRINGDIR="/etc/apt/trusted.gpg.d"
+KEYRING="${KEYRINGDIR}/contactless-keyring.gpg"
+
+case "$1" in
+    purge|remove|failed-upgrade|abort-install|abort-upgrade|disappear)
+    if [ -f $KEYRING ]; then
+        rm $KEYRING
+    fi
+
+    if [ -d $KEYDIR -a ! -f $KEYDIR/* ]; then
+	rmdir $KEYDIR
+    fi
+    ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

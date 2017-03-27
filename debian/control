@@ -1,0 +1,12 @@
+Source: contactless-keyring
+Section: misc
+Priority: optional
+Maintainer: Yury Usishchev <y.usishchev@contactless.ru>
+Build-Depends: debhelper (>= 9)
+
+Package: contactless-keyring
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Recommends: gpgv
+Description: GnuPG keys used by Contactless
